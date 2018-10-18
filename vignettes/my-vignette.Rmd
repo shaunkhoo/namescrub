@@ -1,0 +1,49 @@
+---
+title: "Vignette for the namescrub package"
+author: "Shaun Khoo"
+date: "18 October 2018"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction to the namescrub package
+
+Hello! Thanks for downloading the `namescrub` package. It has been designed to streamline workflows that require some form of name preprocessing. The idea here is to reduce the memory footprint on your global environment while ensuring that you get the job done quickly. Please look below for the vignettes of the various functions (currently only one!) in this package.
+
+## Vignette 1: preproc_name
+
+The `preproc_name` function is built to remove stopwords. You can pass either a string or a character vector as the first argument, to which the function is applied. The second argument is optional - I have a built-in list of common name prefixes and suffixes. I demonstrate below how this works:
+
+``` {r}
+library(namescrub)
+print(names)
+preproc_name(names)
+```
+
+Note that in this function, punctuation is automatically removed and all characters are converted to uppercase. This is typical to text preprocessing. 
+
+You may specify your own stopwords depending on your needs (for instance, a medical or legal context may require more specific stopwords than for the general population). You can set this by explicitly assigning a vector of stopwords to the second argument.
+
+``` {r}
+print(names1)
+legal_stopwords <- c("^HON ", "^HONOURABLE ", "^SIR ", "^DAME ", "^JUDGE ")
+preproc_name(names1, stopwords=legal_stopwords)
+```
+
+Changing the stopwords appropriately can also enable the function to be used in a wider context than just people's names. In the example below, using company-specific stopwords also allows one to use the functon to preprocess company names.
+
+``` {r}
+print(names2)
+company_stopwords <- c(" INC$", "CORPORATION", "COMPANY", " CO$", " LTD$", "INCORPORATED", " INTL$")
+preproc_name(names2, stopwords=company_stopwords)
+```

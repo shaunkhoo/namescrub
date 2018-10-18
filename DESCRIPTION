@@ -1,0 +1,16 @@
+Package: namescrub
+Type: Package
+Title: Simple pre-processing package to handle names
+Version: 0.1.0
+Authors@R: person("Shaun", "Khoo", email="wk2326@columbia.edu", role=c("aut","cre"))
+Description: Streamlines workflow for anyone doing any analysis on people's names by simplifying the preprocessing step.
+License: MIT + file LICENSE
+LazyData: TRUE
+Encoding: UTF-8
+RoxygenNote: 6.1.0.9000
+Imports: stringr,
+  dplyr
+Depends: R (>= 2.10)
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

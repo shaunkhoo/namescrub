@@ -1,0 +1,36 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# namescrub
+
+The goal of namescrub is to streamline workflows for preprocessing names. Specifically, `preprocess_name` removes stopwords from the character strings (or vector) being applied to it. Some common stopwords have been assigned as defaults, but this can be overridden by specifying your own stopwords. The function is Regex-compatible, meaning that you can designate whether you want the stopword to be removed only if it is the first or last word.
+
+## Example
+
+A simple example:
+
+```{r example 1}
+names <- c("Ms. Juliana Crain", "Mr. John Smith", "Mr. Joe Blake", "Mr. Frank Frink", "Mrs. Helen Smith", "Ms. Nicole Dormer", "Mrs. Michiko Tagomi", "Dr. Josef Mengele", "Mr. Ed McCarthy")
+preproc_name(names)
+```
+
+Changing the stopwords can enable `preproc_name` to do more than just people's names:
+
+```{r example 2}
+names2 <- c("APPLE INC.", "INTEL CORPORATION", "AMERICAN AIRLINES", "HERCULES COMPANY", "FEDEX CO.")
+preproc_name(names2, stopwords=c(" INC$", "CORPORATION", "COMPANY", " CO$"))
+```
+
