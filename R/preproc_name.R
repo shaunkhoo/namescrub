@@ -16,8 +16,8 @@ preproc_name <- function(names, stopwords=c("^MRS ", "^MR ", "^MISS ", "^DR ", "
     str_replace_all("[[:punct:]]", "") %>%
     toupper()
   stopwords_cleaned <- stopwords %>%
-    str_replace_all(".", "") %>%
-    str_replace_all(",", "") %>%
+    gsub(pattern=".", replacement="", fixed=T) %>%
+    gsub(pattern=",", replacement="", fixed=T) %>%
     toupper()
   for (item in stopwords_cleaned) {
     names1 <- gsub(item, "", names1)
